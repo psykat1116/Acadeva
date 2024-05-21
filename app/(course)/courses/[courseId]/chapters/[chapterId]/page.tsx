@@ -1,0 +1,100 @@
+import { getChapter } from "@/actions/getChapter";
+import Banner from "@/components/Banner";
+import Preview from "@/components/Preview";
+import CourseEnrollButton from "@/components/individualChapter/CourseEnrollButton";
+import VideoPlayer from "@/components/individualChapter/VideoPlayer";
+import { Separator } from "@/components/ui/separator";
+import { auth } from "@clerk/nextjs/server";
+import { File } from "lucide-react";
+import { redirect } from "next/navigation";
+import React from "react";
+
+const Page = async ({
+  params,
+}: {
+  params: { courseId: string; chapterId: string };
+}) => {
+  const { userId } = auth();
+  if (!userId) {
+    return redirect("/");
+  }
+  const { courseId, chapterId } = params;
+
+  const {
+    chapter,
+    course,
+    muxData,
+    attachments,
+    nextChapter,
+    userProgress,
+    purchase,
+  } = await getChapter({ userId, courseId, chapterId });
+
+  if (!chapter || !course) {
+    return redirect("/");
+  }
+
+  const isBlocked = !chapter.isFree && !purchase;
+  const completeOnEnd = !!purchase && !userProgress?.isCompleted;
+
+  return (
+    <div>
+      {userProgress?.isCompleted && (
+        <Banner label="You already completed this chapter" variant="success" />
+      )}
+      {isBlocked && (
+        <Banner
+          label="You need to purchase this course to watch this chapter"
+          variant="warning"
+        />
+      )}
+      <div className="flex flex-col max-w-4xl mx-auto pb-20">
+        <div className="p-4">
+          <VideoPlayer
+            chapterId={chapterId}
+            title={chapter.title}
+            courseId={courseId}
+            nextChapterId={nextChapter?.id}
+            playbackId={muxData?.playbackId!}
+            isBlocked={isBlocked}
+            completeOnEnd={completeOnEnd}
+          />
+        </div>
+        <div>
+          <div className="p-4 flex flex-col md:flex-row items-center justify-between">
+            <h2 className="text-2xl font-semibold mb-2">{chapter.title}</h2>
+            {purchase ? (
+              <div>{/**TODO: ADD Course Progress*/}</div>
+            ) : (
+              <CourseEnrollButton courseId={courseId} price={course.price!} />
+            )}
+          </div>
+          <Separator />
+          <div>
+            <Preview value={chapter.description!} />
+          </div>
+          {!!attachments.length && (
+            <>
+              <Separator />
+              <div className="p-4">
+                {attachments.map((attachment) => (
+                  <a
+                    href={attachment.url}
+                    target="_blank"
+                    key={attachment.id}
+                    className="flex items-center p-3 w-full bg-sky-200 border text-sky-700 rounded-md hover:underline"
+                  >
+                    <File className="w-6 h-6 mr-2" />
+                    <p className="line-clamp-1">{attachment.name}</p>
+                  </a>
+                ))}
+              </div>
+            </>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Page;
