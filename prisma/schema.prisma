@@ -5,7 +5,8 @@
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
 generator client {
-  provider = "prisma-client-js"
+  provider        = "prisma-client-js"
+  previewFeatures = ["fullTextSearch"]
 }
 
 datasource db {
@@ -52,7 +53,7 @@ model Chapter {
   id          String   @id @default(uuid())
   title       String
   description String?  @db.String()
-  videoUrl    String?   @db.String()
+  videoUrl    String?  @db.String()
   position    Int
   isPublished Boolean  @default(false)
   isFree      Boolean  @default(false)
@@ -93,6 +94,8 @@ model Purchase {
   updatedAt DateTime @updatedAt
 
   course Course @relation(fields: [courseId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, courseId])
 }
 
 model StripeCustomer {

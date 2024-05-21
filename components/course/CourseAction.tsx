@@ -6,6 +6,7 @@ import ConfirmModal from "../modal/ConfirmModal";
 import toast from "react-hot-toast";
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import { useConfetti } from "@/hook/useConfetti";
 
 interface CourseActionProps {
   courseId: string;
@@ -18,6 +19,7 @@ const CourseAction: React.FC<CourseActionProps> = ({
   isPublished,
   disabled,
 }) => {
+  const { onOpen } = useConfetti();
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
   const onDelete = async () => {
@@ -42,6 +44,7 @@ const CourseAction: React.FC<CourseActionProps> = ({
       } else {
         await axios.patch(`/api/courses/${courseId}/publish`);
         toast.success("Course published successfully");
+        onOpen();
       }
       router.refresh();
     } catch (error) {

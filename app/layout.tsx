@@ -3,6 +3,7 @@ import { Manrope } from "next/font/google";
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import ToastProvider from "@/provider/ToastProvider";
+import ConfettiProvider from "@/provider/ConfettiProvider";
 
 const manrope = Manrope({
   subsets: ["latin", "cyrillic", "greek", "vietnamese"],
@@ -24,6 +25,7 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang="en">
         <body className={manrope.className}>
+          <ConfettiProvider />
           <ToastProvider />
           {children}
         </body>
