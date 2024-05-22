@@ -2,6 +2,7 @@ import { getChapter } from "@/actions/getChapter";
 import Banner from "@/components/Banner";
 import Preview from "@/components/Preview";
 import CourseEnrollButton from "@/components/individualChapter/CourseEnrollButton";
+import CourseProgressButton from "@/components/individualChapter/CourseProgressButton";
 import VideoPlayer from "@/components/individualChapter/VideoPlayer";
 import { Separator } from "@/components/ui/separator";
 import { auth } from "@clerk/nextjs/server";
@@ -58,13 +59,21 @@ const Page = async ({
             playbackId={muxData?.playbackId!}
             isBlocked={isBlocked}
             completeOnEnd={completeOnEnd}
+            backupId={chapter.videoUrl!}
           />
         </div>
         <div>
           <div className="p-4 flex flex-col md:flex-row items-center justify-between">
             <h2 className="text-2xl font-semibold mb-2">{chapter.title}</h2>
             {purchase ? (
-              <div>{/**TODO: ADD Course Progress*/}</div>
+              <div>
+                <CourseProgressButton
+                  chapterId={chapterId}
+                  courseId={courseId}
+                  nextChapterId={nextChapter?.id}
+                  isCompleted={!!userProgress?.isCompleted}
+                />
+              </div>
             ) : (
               <CourseEnrollButton courseId={courseId} price={course.price!} />
             )}

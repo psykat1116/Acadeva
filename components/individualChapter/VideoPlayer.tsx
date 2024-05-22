@@ -16,6 +16,7 @@ interface VideoPlayerProps {
   playbackId: string;
   isBlocked: boolean;
   completeOnEnd: boolean;
+  backupId?: string;
 }
 
 const VideoPlayer: React.FC<VideoPlayerProps> = ({
@@ -26,8 +27,38 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
   courseId,
   isBlocked,
   playbackId,
+  backupId,
 }) => {
+  const confetti = useConfetti();
+  const router = useRouter();
   const [isReady, setIsReady] = useState(false);
+
+  const onEnd = async () => {
+    try {
+      if (completeOnEnd) {
+        await axios.put(
+          `/api/courses/${courseId}/chapters/${chapterId}/progress`,
+          {
+            isCompleted: true,
+          }
+        );
+
+        if (!nextChapterId) {
+          confetti.onOpen();
+        }
+
+        toast.success("Chapter completed successfully");
+        router.refresh();
+
+        if (nextChapterId) {
+          router.push(`/courses/${courseId}/chapters/${nextChapterId}`);
+        }
+      }
+    } catch (error) {
+      toast.error("something went wrong!");
+    }
+  };
+
   return (
     <div className="relative aspect-video">
       {!isReady && !isBlocked && (
@@ -46,7 +77,7 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
           title={title}
           className={cn(!isReady && "hidden")}
           onCanPlay={() => setIsReady(true)}
-          onEnded={() => {}}
+          onEnded={onEnd}
           autoPlay
           playbackId={playbackId}
         />
