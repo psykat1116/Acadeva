@@ -1,24 +1,16 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# "Acadeva" a Learning Management System Website Like Udemy Made Using [NextJS](https://nextjs.org/), [Tailwind CSS](https://tailwindcss.com/), Typescript, [Prisma](https://www.prisma.io/) As ORM, [CockroachDB](https://www.cockroachlabs.com/) As PostgreSQL, [Clerk](https://clerk.com/) For Authentication, [Stripe](https://stripe.com/in) For Payment, [Mux](https://www.mux.com/) For Video Processing, [Shadcn UI](https://ui.shadcn.com/) For User Interface And Much More.
 
-## Getting Started
-
-First, run the development server:
-
+## Clone The Repo
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/psykat1116/Acadeva.git
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Run The Development
+!! - Don't Forget To Convert The Folder Name To Lowercase Otherwise, It Can Lead To A Problem 
+```bash
+cd Acadeva
+npm run dev
+```
 
 ## Learn More
 
