@@ -1,5 +1,12 @@
 # 📚 "Acadeva" a Learning Management System Website Like Udemy Made Using [NextJS](https://nextjs.org/), [Tailwind CSS](https://tailwindcss.com/), Typescript, [Prisma](https://www.prisma.io/) As ORM, [CockroachDB](https://www.cockroachlabs.com/) As PostgreSQL, [Clerk](https://clerk.com/) For Authentication, [Stripe](https://stripe.com/in) For Payment, [Mux](https://www.mux.com/) For Video Processing, [Shadcn UI](https://ui.shadcn.com/) For User Interface And Much More.
 
+## 🎯 Dummy Stripe Payment
+Stripe Is In Test Mode. So, Use Dummy Card Numbers Given Below
+```bash
+INDIA - 4000003560000008
+USA - 4242424242424242
+```
+
 ## 🎯 Clone The Repo
 ```bash
 git clone https://github.com/psykat1116/Acadeva.git
