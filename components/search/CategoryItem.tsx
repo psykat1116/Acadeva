@@ -48,7 +48,7 @@ const CategoryItem: React.FC<CategoryItemProps> = ({
     <button
       onClick={handleClick}
       className={cn(
-        "py-2 px-3 text-sm border-slate-200 rounded-full flex items-center gap-x-1 hover:border-sky-700 transition",
+        "min-w-[180px] py-2 px-3 text-sm border border-slate-200 rounded-md flex flex-col items-center gap-x-1 hover:border-sky-700 hover:bg-sky-200/20 hover:text-sky-800 transition gap-1",
         isSelected && "border-sky-700 bg-sky-200/20 text-sky-800"
       )}
     >

@@ -9,7 +9,7 @@ import {
 } from "@hello-pangea/dnd";
 import { cn } from "@/lib/utils";
 import { Grip, Pencil } from "lucide-react";
-import { Badge } from "../ui/badge";
+import { Badge } from "@/components/ui/badge";
 
 interface ChapterListProps {
   onReorder: (updateData: { id: string; position: number }[]) => void;
@@ -82,7 +82,7 @@ const ChapterList: React.FC<ChapterListProps> = ({
                     >
                       <Grip className="h-5 w-5" />
                     </div>
-                    {chapter.title}
+                    <p className="line-clamp-1">{chapter.title}</p>
                     <div className="ml-auto pr-2 flex items-center gap-x-2">
                       {chapter.isFree && <Badge>Free</Badge>}
                       <Badge

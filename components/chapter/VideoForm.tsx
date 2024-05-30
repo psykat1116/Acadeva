@@ -13,7 +13,8 @@ import MuxPlayer from "@mux/mux-player-react";
 interface VideoFormProps {
   courseId: string;
   chapterId: string;
-  initialData: Chapter & { muxData?: MuxData | null };
+  // initialData: Chapter & { muxData?: MuxData | null };
+  initialData: Chapter;
 }
 
 const formSchema = z.object({
@@ -43,8 +44,8 @@ const VideoForm: React.FC<VideoFormProps> = ({
   };
   return (
     <div className="mt-6 border bg-slate-100 rounded-md p-4">
-      <div className="font-medium flex items-center justify-between">
-        Chapter Video
+      <div className="font-bold flex items-center justify-between">
+        Video
         <Button variant="ghost" onClick={toggleEdit}>
           {isEditing && <>Cancel</>}
           {!isEditing && !initialData.videoUrl && (
@@ -56,7 +57,7 @@ const VideoForm: React.FC<VideoFormProps> = ({
           {!isEditing && initialData.videoUrl && (
             <>
               <Pencil className="h-4 w-4 mr-2" />
-              Edit Video
+              Edit
             </>
           )}
         </Button>
@@ -68,7 +69,12 @@ const VideoForm: React.FC<VideoFormProps> = ({
           </div>
         ) : (
           <div className="relative aspect-video mt-2">
-            <MuxPlayer playbackId={initialData?.muxData?.playbackId || ""} />
+            {/* <MuxPlayer playbackId={initialData?.muxData?.playbackId || ""} /> */}
+            <video
+              src={initialData.videoUrl}
+              controls
+              className="h-full w-full"
+            />
           </div>
         ))}
       {isEditing && (

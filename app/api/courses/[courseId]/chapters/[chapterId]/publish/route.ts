@@ -27,14 +27,13 @@ export async function PATCH(
         courseId,
       },
     });
-    const muxData = await db.muxData.findUnique({
-      where: {
-        chapterId,
-      },
-    });
+    // const muxData = await db.muxData.findUnique({
+    //   where: {
+    //     chapterId,
+    //   },
+    // });
     if (
       !chapter ||
-      !muxData ||
       !chapter.description ||
       !chapter.title ||
       !chapter.videoUrl

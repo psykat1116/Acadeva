@@ -88,7 +88,7 @@ const Page = async ({ params }: { params: { courseId: string } }) => {
           />
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-16">
-          <div>
+          <div className="space-y-6">
             <div className="flex items-center gap-x-2">
               <IconBadge icon={LayoutDashboard} />
               <h2 className="text-xl">Customize your course</h2>
@@ -104,15 +104,6 @@ const Page = async ({ params }: { params: { courseId: string } }) => {
                 value: cat.id,
               }))}
             />
-          </div>
-          <div className="space-y-6">
-            <div>
-              <div className="flex items-center gap-x-2">
-                <IconBadge icon={ListChecks} />
-                <h2 className="text-xl">Course Chapter</h2>
-              </div>
-              <ChapterForm initialData={course} courseId={course.id} />
-            </div>
             <div>
               <div className="flex items-center gap-x-2">
                 <IconBadge icon={CircleDollarSign} />
@@ -126,6 +117,15 @@ const Page = async ({ params }: { params: { courseId: string } }) => {
                 <h2 className="text-xl">Resources & Attachments</h2>
               </div>
               <AttachmentForm initialData={course} courseId={course.id} />
+            </div>
+          </div>
+          <div className="space-y-6 max-h-[181vh] overflow-y-scroll">
+            <div>
+              <div className="flex items-center gap-x-2">
+                <IconBadge icon={ListChecks} />
+                <h2 className="text-xl">Course Chapter</h2>
+              </div>
+              <ChapterForm initialData={course} courseId={course.id} />
             </div>
           </div>
         </div>

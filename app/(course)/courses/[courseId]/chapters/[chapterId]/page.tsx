@@ -24,7 +24,7 @@ const Page = async ({
   const {
     chapter,
     course,
-    muxData,
+    // muxData,
     attachments,
     nextChapter,
     userProgress,
@@ -56,7 +56,8 @@ const Page = async ({
             title={chapter.title}
             courseId={courseId}
             nextChapterId={nextChapter?.id}
-            playbackId={muxData?.playbackId!}
+            // playbackId={muxData?.playbackId!}
+            playbackId={chapter.videoUrl!}
             isBlocked={isBlocked}
             completeOnEnd={completeOnEnd}
             backupId={chapter.videoUrl!}

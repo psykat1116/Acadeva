@@ -61,15 +61,15 @@ const ChapterAccessForm: React.FC<ChapterAccessFormProps> = ({
   };
   return (
     <div className="mt-6 border bg-slate-100 rounded-md p-4">
-      <div className="font-medium flex items-center justify-between">
-        Course Access Settings
+      <div className="font-bold flex items-center justify-between">
+        Access Settings
         <Button variant="ghost" onClick={toggleEdit}>
           {isEditing ? (
             <>Cancel</>
           ) : (
             <>
               <Pencil className="h-4 w-4 mr-2" />
-              Edit Access
+              Edit
             </>
           )}
         </Button>

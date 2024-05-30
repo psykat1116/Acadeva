@@ -73,13 +73,22 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
         </div>
       )}
       {!isBlocked && (
-        <MuxPlayer
-          title={title}
-          className={cn(!isReady && "hidden")}
-          onCanPlay={() => setIsReady(true)}
-          onEnded={onEnd}
+        // <MuxPlayer
+        //   title={title}
+        //   className={cn(!isReady && "hidden")}
+        //   onCanPlay={() => setIsReady(true)}
+        //   onEnded={onEnd}
+        //   autoPlay
+        //   playbackId={playbackId}
+        // />
+        <video
+          src={playbackId}
           autoPlay
-          playbackId={playbackId}
+          onEnded={onEnd}
+          onCanPlay={() => setIsReady(true)}
+          title={title}
+          className={cn("h-full w-full", !isReady && "hidden")}
+          controls
         />
       )}
     </div>

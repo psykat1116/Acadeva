@@ -6,14 +6,19 @@ async function main() {
   try {
     await database.category.createMany({
       data: [
-        { name: "Computer Science" },
+        { name: "Development" },
+        { name: "Business" },
+        { name: "Finance & Accounting" },
+        { name: "IT & Software" },
+        { name: "Office Productivity" },
+        { name: "Personal Development" },
+        { name: "Design" },
+        { name: "Marketing" },
+        { name: "Lifestyle" },
+        { name: "Photography & Video" },
+        { name: "Health & Fitness" },
         { name: "Music" },
-        { name: "Fitness" },
-        { name: "Photography" },
-        { name: "Accounting" },
-        { name: "Engineering" },
-        { name: "Geography" },
-        { name: "Filming" },
+        { name: "Teaching & Academics" },
       ],
     });
     console.log("Categories seeded successfully");

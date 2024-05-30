@@ -13,12 +13,11 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Button } from "@/components/ui/button";
-import { Pencil, PlusCircle } from "lucide-react";
+import { PlusCircle } from "lucide-react";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import { cn } from "@/lib/utils";
-import { Textarea } from "../ui/textarea";
-import { Input } from "../ui/input";
+import { Input } from "@/components/ui/input";
 import ChapterList from "./ChapterList";
 
 interface ChapterFormProps {
@@ -47,6 +46,7 @@ const ChapterForm: React.FC<ChapterFormProps> = ({ courseId, initialData }) => {
       await axios.post(`/api/courses/${courseId}/chapters`, values);
       toast.success("Chapter Created");
       toggleCreate();
+      form.reset();
       router.refresh();
     } catch (error) {
       toast.error("Something went wrong");

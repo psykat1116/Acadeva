@@ -51,15 +51,15 @@ const ChapterTitleForm: React.FC<ChapterTitleFormProps> = ({ courseId, initialDa
   };
   return (
     <div className="mt-6 border bg-slate-100 rounded-md p-4">
-      <div className="font-medium flex items-center justify-between">
-        Chapter Title
+      <div className="font-bold flex items-center justify-between">
+        Title
         <Button variant={"ghost"} onClick={toggleEdit}>
           {isEditing ? (
             <>Cancel</>
           ) : (
             <>
               <Pencil className="h-4 w-4 mr-2" />
-              Edit Title
+              Edit
             </>
           )}
         </Button>

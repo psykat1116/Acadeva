@@ -3,10 +3,10 @@ import { NextResponse } from "next/server";
 import { auth } from "@clerk/nextjs/server";
 import Mux from "@mux/mux-node";
 
-const { video } = new Mux({
-  tokenId: process.env.MUX_TOKEN_ID,
-  tokenSecret: process.env.MUX_TOKEN_SECRET,
-});
+// const { video } = new Mux({
+//   tokenId: process.env.MUX_TOKEN_ID,
+//   tokenSecret: process.env.MUX_TOKEN_SECRET,
+// });
 
 export async function PATCH(
   req: Request,
@@ -63,11 +63,12 @@ export async function DELETE(
         userId,
       },
       include: {
-        chapters: {
-          include: {
-            muxData: true,
-          },
-        },
+        // chapters: {
+        //   include: {
+        //     muxData: true,
+        //   },
+        // },
+        chapters: true,
       },
     });
 
@@ -75,11 +76,11 @@ export async function DELETE(
       return new NextResponse("Course not found", { status: 404 });
     }
 
-    for (let chapter of course.chapters) {
-      if (chapter.muxData?.assetId) {
-        await video.assets.delete(chapter.muxData.assetId);
-      }
-    }
+    // for (let chapter of course.chapters) {
+    //   if (chapter.muxData?.assetId) {
+    //     await video.assets.delete(chapter.muxData.assetId);
+    //   }
+    // }
 
     const deletedCourse = await db.course.delete({
       where: {
