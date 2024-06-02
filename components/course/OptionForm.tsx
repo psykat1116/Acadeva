@@ -61,15 +61,15 @@ const OptionForm: React.FC<OptionFormProps> = ({
 
   return (
     <div className="mt-6 border bg-slate-100 rounded-md p-4">
-      <div className="font-medium flex items-center justify-between">
-        Course Category
+      <div className="font-bold flex items-center justify-between">
+        Category
         <Button variant="ghost" onClick={toggleEdit}>
           {isEditing ? (
             <>Cancel</>
           ) : (
             <>
               <Pencil className="h-4 w-4 mr-2" />
-              Edit Category
+              Edit
             </>
           )}
         </Button>

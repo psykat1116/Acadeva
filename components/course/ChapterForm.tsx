@@ -70,8 +70,8 @@ const ChapterForm: React.FC<ChapterFormProps> = ({ courseId, initialData }) => {
   };
   return (
     <div className="mt-6 border bg-slate-100 rounded-md p-4">
-      <div className="font-medium flex items-center justify-between">
-        Course Chapter
+      <div className="font-bold flex items-center justify-between">
+        Chapters
         <Button variant="ghost" onClick={toggleCreate}>
           {isCreating ? (
             <>Cancel</>
@@ -100,6 +100,7 @@ const ChapterForm: React.FC<ChapterFormProps> = ({ courseId, initialData }) => {
                       disabled={isSubmitting}
                       placeholder="e.g. 'Introduction to the course'"
                       {...field}
+                      autoFocus
                     />
                   </FormControl>
                   <FormMessage />

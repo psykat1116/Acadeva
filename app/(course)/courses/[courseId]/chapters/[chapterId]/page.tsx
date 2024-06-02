@@ -64,7 +64,7 @@ const Page = async ({
           />
         </div>
         <div>
-          <div className="p-4 flex flex-col md:flex-row items-center justify-between">
+          <div className="p-4 flex flex-col md:flex-row items-start justify-between gap-3">
             <h2 className="text-2xl font-semibold mb-2">{chapter.title}</h2>
             {purchase ? (
               <div>

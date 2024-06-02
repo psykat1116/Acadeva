@@ -76,20 +76,31 @@ const Page = async ({
           </div>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-16">
+          <div>
+            <div className="flex items-center gap-x-2">
+              <IconBadge icon={LayoutDashboard} />
+              <h2 className="text-xl">Customise Your Chapter</h2>
+            </div>
+            <ChapterTitleForm
+              courseId={courseId}
+              chapterId={chapterId}
+              initialData={chapter}
+            />
+            <ChapterDescriptionForm
+              courseId={courseId}
+              chapterId={chapterId}
+              initialData={chapter}
+            />
+          </div>
           <div className="space-y-4">
             <div>
               <div className="flex items-center gap-x-2">
-                <IconBadge icon={LayoutDashboard} />
-                <h2 className="text-xl">Customise Your Chapter</h2>
+                <IconBadge icon={Video} />
+                <h2 className="text-2xl">Add a Video</h2>
               </div>
-              <ChapterTitleForm
-                courseId={courseId}
+              <VideoForm
                 chapterId={chapterId}
-                initialData={chapter}
-              />
-              <ChapterDescriptionForm
                 courseId={courseId}
-                chapterId={chapterId}
                 initialData={chapter}
               />
             </div>
@@ -104,17 +115,6 @@ const Page = async ({
                 chapterId={chapterId}
               />
             </div>
-          </div>
-          <div>
-            <div className="flex items-center gap-x-2">
-              <IconBadge icon={Video} />
-              <h2 className="text-2xl">Add a Video</h2>
-            </div>
-            <VideoForm
-              chapterId={chapterId}
-              courseId={courseId}
-              initialData={chapter}
-            />
           </div>
         </div>
       </div>

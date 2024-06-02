@@ -14,8 +14,8 @@ const Editor: React.FC<EditorProps> = ({ onChange, value }) => {
     []
   );
   return (
-    <div className="bg-white">
-      <ReactQuill theme="snow" value={value} onChange={onChange} />
+    <div className="bg-transparent h-[385px] overflow-y-scroll">
+      <ReactQuill theme="snow" value={value} onChange={onChange} className="h-full"/>
     </div>
   );
 };

@@ -58,6 +58,7 @@ const ChapterDescriptionForm: React.FC<ChapterDescriptionFormProps> = ({
       toast.error("Something went wrong");
     }
   };
+
   return (
     <div className="mt-6 border bg-slate-100 rounded-md p-4">
       <div className="font-bold flex items-center justify-between">
@@ -83,7 +84,7 @@ const ChapterDescriptionForm: React.FC<ChapterDescriptionFormProps> = ({
           {!initialData.description ? (
             "No description"
           ) : (
-            <Preview value={initialData.description} />
+            <Preview value={initialData.description} isViewing/>
           )}
         </div>
       )}

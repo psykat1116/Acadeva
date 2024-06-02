@@ -40,16 +40,16 @@ const CourseSidebarItem: React.FC<CourseSidebarItemProps> = ({
         isCompleted && isActive && "bg-emerald-200/20"
       )}
     >
-      <div className="flex items-center gap-x-2 py-4">
+      <div className="flex text-left items-center gap-x-3 py-4">
         <Icon
-          size={16}
+          size={18}
           className={cn(
             "text-slate-500",
             isActive && "text-slate-700",
             isCompleted && "text-emerald-700"
           )}
         />
-        {label}
+        <p className="line-clamp-1 w-full">{label}</p>
       </div>
       <div
         className={cn(
