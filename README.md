@@ -49,12 +49,12 @@ DATABASE_URL = postgresql://<username>:<password>@<host>:<port>/<database>?sslmo
 ## 🎯 Clerk Authentication
 - Create Your Account And Create a New Application
 - Set The Login And Sign Up for Medium Like Google, Github, Email, Phone No, etc
-- Get NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY and CLERK_SECRET_KEY and paste into .env File
+- Get `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY` and `CLERK_SECRET_KEY` and paste into .env File
 - Go Through the documentation
 
 ## 🎯 Stripe Integration
 - Create Your Stripe Account and create a new project account
-- Get The Secret Key & Set This Into STRIPE_SECRET_KEY
+- Get The Secret Key & Set This Into `STRIPE_SECRET_KEY`
 - For Testing The Webhook In the Local Environment Go Through the [Local Environemnt](https://dashboard.stripe.com/test/webhooks/create?endpoint_location=local)
 - First Download The [Stripe CLI](https://stripe.com/docs/stripe-cli)
 - Run The Following Code Into The Terminal
@@ -62,20 +62,20 @@ DATABASE_URL = postgresql://<username>:<password>@<host>:<port>/<database>?sslmo
   stripe login
   stripe listen --forward-to localhost:3000/api/webhook
   ```
-- After Running This You Will Get A Code & Paste it into STRIPE_WEBHOOK_SECRET
-- For Hosted Website Set NEXT_PUBLIC_SITE_URL to your hosted website URL
+- After Running This You Will Get A Code & Paste it into `STRIPE_WEBHOOK_SECRET`
+- For Hosted Website Set `NEXT_PUBLIC_SITE_URL` to your hosted website URL
 - Get Webhook Secret From [Here](https://dashboard.stripe.com/test/webhooks/create)
 - Endpoint URL will be hosted website URL & Selected Events Will Be
   ```bash
   Checkout -> checkout.session.completed
   ```
-- Update The STRIPE_WEBHOOK_SECRET to your hosted website <b>https://{website}/api/webhook</b>
+- Update The STRIPE_WEBHOOK_SECRET to your hosted website `https://{website}/api/webhook`
 
 ## 🎯 Uploadthing Integration
 - Go To Uploadthing Website Create An Account & Create a new app
-- Get The API Keys In the <b>API keys section</b> And Set The Value Of UPLOADTHING_SECRET and UPLOADTHING_APP_ID
+- Get The API Keys In the `API keys section` And Set The Value Of `UPLOADTHING_SECRET` and `UPLOADTHING_APP_ID`
 
 ## 🎯 Mux Integration
 - Go To The MUX Website & Create An Account
-- Get The MUX_TOKEN_SECRET From <b>Settings -> Access Tokens -> Generate New Token</b>
-- You Will Also Get MUX_TOKEN_ID From There In The <b>Token ID</b> Column
+- Get The `MUX_TOKEN_SECRET` From `Settings -> Access Tokens -> Generate New Token`
+- You Will Also Get `MUX_TOKEN_ID` From There In The `Token ID` Column
