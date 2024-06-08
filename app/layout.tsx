@@ -14,6 +14,9 @@ export const metadata: Metadata = {
   title: "Acadeva - A Learning Platform for Developers and Designers 🚀",
   description:
     "Acadeva is a learning platform for developers and designers. Learn from the best and get started with your career today! 🚀",
+  icons: {
+    icon: [{ url: "/logo.svg", href: "/logo.svg" }],
+  },
 };
 
 export default function RootLayout({
