@@ -1,11 +1,16 @@
+import React from "react";
+import { db } from "@/lib/db";
+import { redirect } from "next/navigation";
+import { auth, currentUser } from "@clerk/nextjs/server";
 import { columns } from "@/components/courses/Column";
 import { DataTable } from "@/components/courses/DataTable";
-import { Button } from "@/components/ui/button";
-import { db } from "@/lib/db";
-import { auth } from "@clerk/nextjs/server";
-import Link from "next/link";
-import { redirect } from "next/navigation";
-import React from "react";
+
+export async function generateMetadata() {
+  const user = await currentUser();
+  return {
+    title: `${user?.fullName} Courses`,
+  };
+}
 
 const Page = async () => {
   const { userId } = auth();

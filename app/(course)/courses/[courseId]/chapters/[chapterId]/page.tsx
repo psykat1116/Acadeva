@@ -1,14 +1,50 @@
-import { getChapter } from "@/actions/getChapter";
+import React from "react";
+import { redirect } from "next/navigation";
+import { auth } from "@clerk/nextjs/server";
 import Banner from "@/components/Banner";
 import Preview from "@/components/Preview";
 import CourseEnrollButton from "@/components/individualChapter/CourseEnrollButton";
 import CourseProgressButton from "@/components/individualChapter/CourseProgressButton";
 import VideoPlayer from "@/components/individualChapter/VideoPlayer";
 import { Separator } from "@/components/ui/separator";
-import { auth } from "@clerk/nextjs/server";
+import { getChapter } from "@/actions/getChapter";
 import { File } from "lucide-react";
-import { redirect } from "next/navigation";
-import React from "react";
+import { db } from "@/lib/db";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { courseId: string; chapterId: string };
+}) {
+  const { userId } = auth();
+  if (!userId) {
+    return redirect("/");
+  }
+  const { courseId, chapterId } = params;
+  const course = await db.course.findUnique({
+    where: {
+      id: courseId,
+      userId,
+    },
+  });
+  const chapter = await db.chapter.findUnique({
+    where: {
+      id: chapterId,
+      courseId,
+      course: {
+        userId,
+      },
+    },
+  });
+
+  if (!chapter || !course) {
+    return redirect("/");
+  }
+
+  return {
+    title: `${chapter?.title} ` || `${course?.title}` || "Chapter",
+  };
+}
 
 const Page = async ({
   params,

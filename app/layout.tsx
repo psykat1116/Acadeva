@@ -1,6 +1,6 @@
+import "./globals.css";
 import type { Metadata } from "next";
 import { Manrope } from "next/font/google";
-import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import ToastProvider from "@/provider/ToastProvider";
 import ConfettiProvider from "@/provider/ConfettiProvider";
@@ -11,7 +11,10 @@ const manrope = Manrope({
 });
 
 export const metadata: Metadata = {
-  title: "Acadeva - A Learning Platform for Developers and Designers 🚀",
+  title: {
+    default: "Acadeva - A Learning Platform for Developers and Designers 🚀",
+    template: `%s | Acadeva`,
+  },
   description:
     "Acadeva is a learning platform for developers and designers. Learn from the best and get started with your career today! 🚀",
   icons: {
@@ -22,9 +25,12 @@ export const metadata: Metadata = {
     images: [
       {
         url: "https://github.com/psykat1116/Acadeva/blob/master/public/OpenGraph.png?raw=true",
+        secureUrl:
+          "https://github.com/psykat1116/Acadeva/blob/master/public/OpenGraph.png?raw=true",
         width: 1280,
         height: 640,
         alt: "Acadeva - A Learning Platform for Developers and Designers 🚀",
+        type: "image/png",
       },
     ],
     description:
@@ -32,7 +38,6 @@ export const metadata: Metadata = {
     type: "website",
     url: "https://acadeva-six.vercel.app/",
     siteName: "Acadeva",
-    locale: "en_IN",
   },
 };
 

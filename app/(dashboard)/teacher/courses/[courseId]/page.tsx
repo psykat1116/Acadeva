@@ -1,3 +1,8 @@
+import React from "react";
+import { db } from "@/lib/db";
+import { redirect } from "next/navigation";
+import { auth } from "@clerk/nextjs/server";
+
 import Banner from "@/components/Banner";
 import IconBadge from "@/components/IconBadge";
 import AttachmentForm from "@/components/course/AttachmentForm";
@@ -8,16 +13,47 @@ import ImageForm from "@/components/course/ImageForm";
 import OptionForm from "@/components/course/OptionForm";
 import PriceForm from "@/components/course/PriceForm";
 import TitleForm from "@/components/course/TitleForm";
-import { db } from "@/lib/db";
-import { auth } from "@clerk/nextjs/server";
+
 import {
   CircleDollarSign,
   File,
   LayoutDashboard,
   ListChecks,
 } from "lucide-react";
-import { redirect } from "next/navigation";
-import React from "react";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { courseId: string };
+}) {
+  const { userId } = auth();
+  const { courseId } = params;
+  if (!userId) {
+    return redirect("/");
+  }
+  const course = await db.course.findUnique({
+    where: {
+      id: courseId,
+      userId,
+    },
+    include: {
+      attachments: {
+        orderBy: {
+          createdAt: "asc",
+        },
+      },
+      chapters: {
+        orderBy: {
+          position: "asc",
+        },
+      },
+    },
+  });
+
+  return {
+    title: `${course?.title}`,
+  };
+}
 
 const Page = async ({ params }: { params: { courseId: string } }) => {
   const { userId } = auth();
