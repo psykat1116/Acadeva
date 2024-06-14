@@ -1,7 +1,7 @@
 # 📚 "Acadeva" a Learning Management System Website Like Udemy Made Using [NextJS](https://nextjs.org/), [Tailwind CSS](https://tailwindcss.com/), Typescript, [Prisma](https://www.prisma.io/) As ORM, [CockroachDB](https://www.cockroachlabs.com/) As PostgreSQL, [Clerk](https://clerk.com/) For Authentication, [Stripe](https://stripe.com/in) For Payment, [Mux](https://www.mux.com/) For Video Processing, [Shadcn UI](https://ui.shadcn.com/) For User Interface And Much More.
 
 ## 🎯 Dummy Stripe Payment
-Stripe Is In Test Mode. So, Use Dummy Card Numbers Given Below
+Stripe Is In Test Mode. So, Use the Dummy Card Numbers Given Below. For More Details Or a Dummy Number of Your Country Go To [Testing Card Number](https://docs.stripe.com/testing)
 ```bash
 INDIA - 4000003560000008
 USA - 4242424242424242
