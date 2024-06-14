@@ -25,10 +25,20 @@ export async function generateMetadata({
     return redirect("/");
   }
 
+  const course = await db.course.findUnique({
+    where: {
+      id: courseId,
+      userId,
+    },
+  });
+
   const chapter = await db.chapter.findUnique({
     where: {
       id: chapterId,
       courseId,
+      course: {
+        userId,
+      },
     },
     include: {
       muxData: true,
@@ -40,7 +50,7 @@ export async function generateMetadata({
   }
 
   return {
-    title: `${chapter?.title}`,
+    title: `${chapter?.title} | ${course?.title}`,
   };
 }
 

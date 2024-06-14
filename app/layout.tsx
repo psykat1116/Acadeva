@@ -18,26 +18,29 @@ export const metadata: Metadata = {
   description:
     "Acadeva is a learning platform for developers and designers. Learn from the best and get started with your career today! 🚀",
   icons: {
-    icon: [{ url: "/logo.svg", href: "/logo.svg" }],
+    icon: [
+      {
+        href: "/logo.svg",
+        url: "/logo.svg",
+      },
+    ],
   },
   openGraph: {
-    title: "Acadeva - A Learning Platform for Developers and Designers 🚀",
+    type: "website",
+    locale: "en_US",
+    url: "https://acadeva-six.vercel.app/",
+    siteName: "Acadeva",
     images: [
       {
         url: "https://github.com/psykat1116/Acadeva/blob/master/public/OpenGraph.png?raw=true",
-        secureUrl:
-          "https://github.com/psykat1116/Acadeva/blob/master/public/OpenGraph.png?raw=true",
-        width: 1280,
-        height: 640,
+        width: 1366,
+        height: 679,
         alt: "Acadeva - A Learning Platform for Developers and Designers 🚀",
-        type: "image/png",
       },
     ],
+    title: "Acadeva - A Learning Platform for Developers and Designers 🚀",
     description:
       "Acadeva is a learning platform for developers and designers. Learn from the best and get started with your career today! 🚀",
-    type: "website",
-    url: "https://acadeva-six.vercel.app/",
-    siteName: "Acadeva",
   },
 };
 

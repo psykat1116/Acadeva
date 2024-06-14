@@ -20,12 +20,6 @@ import { useForm } from "react-hook-form";
 import Link from "next/link";
 import toast from "react-hot-toast";
 
-export async function generateMetadata() {
-  return {
-    title: "Create New Course",
-  };
-}
-
 const formSchema = z.object({
   title: z.string().min(1, { message: "Title is required" }),
 });
