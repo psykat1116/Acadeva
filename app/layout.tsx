@@ -19,20 +19,20 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "Acadeva - A Learning Platform for Developers and Designers 🚀",
-    description:
-      "Acadeva is a learning platform for developers and designers. Learn from the best and get started with your career today! 🚀",
     images: [
       {
         url: "https://github.com/psykat1116/Acadeva/blob/master/public/OpenGraph.png?raw=true",
-        alt: "Acadeva",
         width: 1280,
         height: 640,
+        alt: "Acadeva - A Learning Platform for Developers and Designers 🚀",
       },
     ],
-    siteName: "Acadeva",
-    locale: "en_US",
+    description:
+      "Acadeva is a learning platform for developers and designers. Learn from the best and get started with your career today! 🚀",
     type: "website",
     url: "https://acadeva-six.vercel.app/",
+    siteName: "Acadeva",
+    locale: "en_IN",
   },
 };
 
